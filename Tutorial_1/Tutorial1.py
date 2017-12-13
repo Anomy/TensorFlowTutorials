@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import tensorflow as tf
 
+#https://www.tensorflow.org/get_started/get_started
 
 node1 = tf.constant(3.0, dtype=tf.float32)
 node2 = tf.constant(4.0) # also tf.float32 implicitly
@@ -20,3 +21,17 @@ adder_node = a + b # + provides a shortcut for tf.add(a, b)
 
 print(sess.run(adder_node, {a: 3, b: 4.5})) #7.5
 print(sess.run(adder_node, {a: [1, 3], b: [2, 4]})) #[ 3.  7.]
+
+add_and_tripple = adder_node * 3.
+print(sess.run(add_and_tripple, {a: 3, b: 4.5})) #22.5
+
+W = tf.Variable([.3], dtype=tf.float32)
+b = tf.Variable([-.3], dtype=tf.float32)
+x = tf.placeholder(tf.float32)
+linear_model = W*x + b
+init = tf.global_variables_initializer()
+sess.run(init)
+
+print(sess.run(linear_model, {x: [1, 2, 3, 4]})) #[ 0.          0.30000001  0.60000002  0.90000004]
+
+
