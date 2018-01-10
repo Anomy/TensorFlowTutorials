@@ -61,8 +61,8 @@ print(sess.run([W, b])) #[array([-0.9999969], dtype=float32), array([ 0.99999082
 import numpy as np
 import tensorflow as tf
 
-feature_colummns = [tf.feature_column.numeric_column("x", shape=[1])]
-estimator = tf.estimator.LinearRegressor(feature_columns=feature_colummns)
+feature_columns = [tf.feature_column.numeric_column("x", shape=[1])]
+estimator = tf.estimator.LinearRegressor(feature_columns=feature_columns)
 
 
 x_train = np.array([1., 2., 3., 4.])
@@ -77,5 +77,5 @@ estimator.train(input_fn=input_fn, steps=1000)
 
 train_metrics = estimator.evaluate(input_fn=train_input_fn)
 eval_metrics = estimator.evaluate(input_fn=eval_input_fn)
-print("train metrics: %r"% train_metrics)
-print("eval metrics: %r"% eval_metrics)
+print("train metrics: %r"% train_metrics) #train metrics: {'average_loss': 5.8189531e-08, 'global_step': 1000, 'loss': 2.3275813e-07}
+print("eval metrics: %r"% eval_metrics) #eval metrics: {'average_loss': 0.0025508408, 'global_step': 1000, 'loss': 0.010203363}
