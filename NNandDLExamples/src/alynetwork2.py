@@ -97,7 +97,7 @@ class Network(object):
         # L1 Regularization ## TODO BRAEK THIS ALLISON I CANT TELL IF WE ARE MISSING A W IN THE FIRST BIT OF THIS
         # it's training VERY badly so there's probably something wrong.
 
-        # 
+        #
         self.weights = [(np.sign(-w) * (eta * (lmbda / n))) * w - (eta / len(mini_batch)) * nw
                         for w, nw in zip(self.weights, nabla_w)]
 
